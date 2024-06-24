@@ -1,0 +1,28 @@
+%\usepackage{soulutf8}
+%\usepackage{trackchanges}
+%\soulregister\ref7
+%\soulregister\cite7
+
+\definecolor{notsored}{rgb}{0.75,0,0}
+\definecolor{notsoblue}{rgb}{0,0,0.85}
+\definecolor{orange}{rgb}{1.0,0.75,0.0}
+
+\newcommand{\blue}[1]{{\leavevmode\color{blue}#1}}
+\newcommand{\red}[1]{{\leavevmode\color{red}#1}}
+\newcommand{\green}[1]{{\leavevmode\color{teal}#1}}
+\newcommand{\orange}[1]{{\leavevmode\color{orange}#1}}
+
+\newcommand{\rem}[2][]{{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsored}\sout{#2}}}
+\newcommand{\add}[2][]{{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsoblue}#2}}
+\newcommand{\chg}[3][]{\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\rem{#2}\,\add{#3}}
+
+
+%\newcommand{\add}[2][]{{\leavevmode\color{notsoblue}#2}}
+%\newcommand{\chg}[3][]{\rem{#2}\;\add{#3}}
+
+% \rem{A}
+% \rem[g]{A}
+% \add{A}
+% \add[gpt]{A}
+% \chg{A}{B}
+% \chg[g]{A}{B}
