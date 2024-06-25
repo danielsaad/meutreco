@@ -32,13 +32,15 @@
 
 \newcommand{\add}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsoblue}#2} 
 \refstepcounter{changes}
-
 \addcontentsline{chg}{changes}
   {\protect\numberline{\thechanges} {\color{notsoblue} add}: #2}\par  
 \fi
 }
-\newcommand{\chg}[3][]{\iftreco{\ifx&#1&\relax\else{\scriptsize#1:\,}\fi {\color{notsored}\sout{#2}}\,{\color{notsoblue}#2} \addcontentsline{chg}{changes}
-{\protect\numberline{\thechanges} {\color{orange}change}: #2}\par  }\else{#2} \fi
+\newcommand{\chg}[3][]{\iftreco{\ifx&#1&\relax\else{\scriptsize#1:\,}\fi 
+    {\color{notsored}\sout{#2}}\,{\color{notsoblue}#3} 
+    \addcontentsline{chg}{changes}
+    {\protect\numberline{\thechanges}{\color{orange}change}: #2 $\to$ {\color{notsoblue}  #3} }\par } 
+    \else{#2} \fi
 }
 
 
