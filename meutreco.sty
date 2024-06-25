@@ -2,15 +2,20 @@
 %\usepackage{trackchanges}
 %\soulregister\ref7
 %\soulregister\cite7
-\ProvidesPackage{meutreco}[2024/06/25 Package for reviewing LaTeX documents.]
+\ProvidesPackage{meutreco}[2024/06/24 Package for reviewing LaTeX documents.]
 \RequirePackage{xcolor}
 \RequirePackage[normalem]{ulem}
+\RequirePackage{tocloft}
 
+% enable a List of Lists
+\newcommand{\listofchangesname}{List of changes}
+\newlistof{changes}{chg}{\listofchangesname}
 
 \newif\iftreco
 \newcommand{\trecoOn}{\trecotrue}
 \newcommand{\trecoOff}{\trecofalse}
 
+\trecotrue 
 \definecolor{notsored}{rgb}{0.75,0,0}
 \definecolor{notsoblue}{rgb}{0,0,0.85}
 \definecolor{orange}{rgb}{1.0,0.75,0.0}
@@ -20,9 +25,21 @@
 \newcommand{\green}[1]{{\leavevmode\color{teal}#1}}
 \newcommand{\orange}[1]{{\leavevmode\color{orange}#1}}
 
-\newcommand{\rem}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsored}\sout{#2}}\else{#2}\fi}
-\newcommand{\add}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsoblue}#2}\fi}
-\newcommand{\chg}[3][]{\iftreco{\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\rem{#2}\,\add{#3}} \else{#2} \fi}
+\newcommand{\rem}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsored}\sout{#2}  \refstepcounter{changes}
+\addcontentsline{chg}{changes}
+  {\protect\numberline{\thechanges} {\color{notsored}remove}: #2}\par  } \else{#2}\fi
+}
+
+\newcommand{\add}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsoblue}#2} 
+\refstepcounter{changes}
+
+\addcontentsline{chg}{changes}
+  {\protect\numberline{\thechanges} {\color{notsoblue} add}: #2}\par  
+\fi
+}
+\newcommand{\chg}[3][]{\iftreco{\ifx&#1&\relax\else{\scriptsize#1:\,}\fi {\color{notsored}\sout{#2}}\,{\color{notsoblue}#2} \addcontentsline{chg}{changes}
+{\protect\numberline{\thechanges} {\color{orange}change}: #2}\par  }\else{#2} \fi
+}
 
 
 %\newcommand{\add}[2][]{{\leavevmode\color{notsoblue}#2}}
