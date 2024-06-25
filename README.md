@@ -1,2 +1,2 @@
 # meutreco
-Review tracker for latex from gpt and fa-louza.
+Review tracker for latex from @gptelles and @felipelouza.
