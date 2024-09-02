@@ -25,7 +25,7 @@
 \newcommand{\green}[1]{{\leavevmode\color{teal}#1}}
 \newcommand{\orange}[1]{{\leavevmode\color{orange}#1}}
 
-\newcommand{\rem}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsored}\sout{#2}  \refstepcounter{changes}
+\newcommand{\rem}[2][]{\iftreco{\leavevmode\ifx&#1&\relax\else{\scriptsize#1:\,}\fi\color{notsored}\sout{\mbox{#2}}  \refstepcounter{changes}
 \addcontentsline{chg}{changes}
   {\protect\numberline{\thechanges} {\color{notsored}remove}: #2}\par  } \else{#2}\fi
 }
