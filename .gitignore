@@ -1,0 +1,10 @@
+*.swp
+*.aux
+*.chg
+*.fdb*
+*.fls
+*.log
+*.out
+*.pfg
+*.synctex.gz
+*.pdf
